@@ -1,0 +1,167 @@
+##############################
+# wl11d .clang-format config #
+##############################
+
+BasedOnStyle: LLVM
+
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Left
+# AlignConsecutiveAssignments:
+#   Enabled: true
+#   AcrossEmptyLines: false
+#   AcrossComments: true
+#   AlignCompound: true
+#   AlignFunctionPointers: true
+#   PadOperators: false
+
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: true
+  AlignCompound: true
+  # AlignFunctionDeclarations: false
+  AlignFunctionPointers: true
+  PadOperators: false
+
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: true
+  AlignCompound: true
+  AlignFunctionPointers: true
+  PadOperators: false
+
+AlignConsecutiveShortCaseStatements:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: true
+  AlignCaseArrows: true
+  AlignCaseColons: false
+
+AlignEscapedNewlines: Left
+AlignOperands: Align
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 1
+
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowBreakBeforeNoexceptSpecifier: Never
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseExpressionOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortCompoundRequirementOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakBeforeMultilineStrings: true
+BinPackArguments: true
+BinPackParameters: AlwaysOnePerLine
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeElse: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+
+BracedInitializerIndentWidth: 4
+BreakAdjacentStringLiterals: true
+BreakAfterReturnType: Automatic
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Custom
+
+BreakBeforeInlineASMColon: OnlyMultiline
+BreakBeforeTernaryOperators: true
+BreakFunctionDefinitionParameters: false
+BreakStringLiterals: false
+
+# set to 0 (no limit) for libwayland's / wayland-scanner's / libxcb's annoying longer functions and types
+# at least until clang-format implements a rule for disallowing binning after assignments, for e.g.:
+# ---
+# int long_variable_name =
+#     wl_long_function_name( ... alot of variables ... );
+# ---
+#
+# should be:
+# ---
+# int long_variable_name = wl_long_function_name( ... variables ...,
+#                                                 ... more variables ...);
+# ---
+ColumnLimit: 0
+
+# ContinuationIndentWidth: 0
+DerivePointerAlignment: false
+ForEachMacros: [
+  array_for_each,
+  list_for_each,
+  list_for_each_safe,
+  list_for_each_reverse,
+  list_for_each_reverse_safe,
+]
+IncludeBlocks: Preserve
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentExternBlock: NoIndent
+IndentGotoLabels: false
+IndentPPDirectives: BeforeHash
+IndentWidth: 4
+IndentWrappedFunctionNames: false
+InsertBraces: false
+InsertNewlineAtEOF: true
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
+
+MaxEmptyLinesToKeep: 1
+# OneLineFormatOffRegex: [^/\* clang-format offoneline (|:.*)\*/]
+PPIndentWidth: 2
+PointerAlignment: Right
+QualifierAlignment: Custom
+QualifierOrder: [
+  const,
+  static,
+  inline,
+  volatile,
+  restrict,
+  type
+]
+ReflowComments: true
+RemoveBracesLLVM: false
+RemoveParentheses: Leave
+RemoveSemicolon: false
+SeparateDefinitionBlocks: Always
+SkipMacroDefinitionBody: true
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterForeachMacros: true
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName: false
+  AfterIfMacros: true
+  BeforeNonEmptyParentheses: false
+
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpacesInLineCommentPrefix:
+  Minimum: 1
+
+SpacesInParens: Never
+TabWidth: 4
+UseTab: Always

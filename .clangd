@@ -1,0 +1,12 @@
+CompileFlags:
+  Add:
+    - "-xc"
+    - "-std=c23"
+    - "-ferror-limit=0"
+  Compiler: clang
+
+Completion:
+  HeaderInsertion: Never
+
+InlayHints:
+  Enabled: false
