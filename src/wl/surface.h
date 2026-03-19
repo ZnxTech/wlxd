@@ -26,6 +26,8 @@ typedef struct wlx_surface_resource {
 	wlx_surface_role_t role;
 	wl_resource_t	  *role_resource;
 
+	xcb_window_t x_window;
+
 	// double buffered, variables are moved from index-0 to index-1 when commited
 	wlx_buffer_resource_t *buffer_attached[2];
 	int32_t				   buffer_x[2], buffer_y[2];
