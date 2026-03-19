@@ -31,15 +31,13 @@ static void wl_region_request_add(wl_client_t	*client,
 								  int32_t		 height)
 {
 	wlx_region_resource_t *region = wl_resource_get_user_data(resource);
-
-	wlx_region_rect_t *rect_p = array_add(&region->rects, sizeof(wlx_region_rect_t));
-	*rect_p = (wlx_region_rect_t){
-		.x = x,
-		.y = y,
-		.width = width,
-		.height = height,
-		.add = true,
-	};
+	wlx_region_rect_t	  *rect;
+	rect = array_add(&region->rects, sizeof(*rect));
+	rect->x = x;
+	rect->y = y;
+	rect->width = width;
+	rect->height = height;
+	rect->add = true;
 }
 
 static void wl_region_request_subtract(wl_client_t	 *client,
@@ -50,15 +48,13 @@ static void wl_region_request_subtract(wl_client_t	 *client,
 									   int32_t		  height)
 {
 	wlx_region_resource_t *region = wl_resource_get_user_data(resource);
-
-	wlx_region_rect_t *rect_p = array_add(&region->rects, sizeof(wlx_region_rect_t));
-	*rect_p = (wlx_region_rect_t){
-		.x = x,
-		.y = y,
-		.width = width,
-		.height = height,
-		.add = false,
-	};
+	wlx_region_rect_t	  *rect;
+	rect = array_add(&region->rects, sizeof(*rect));
+	rect->x = x;
+	rect->y = y;
+	rect->width = width;
+	rect->height = height;
+	rect->add = false;
 }
 
 const static struct wl_region_interface wl_region_impl = {

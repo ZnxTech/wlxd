@@ -91,7 +91,7 @@ void wlx_output_mode_create(wlx_output_holder_t	 *output_holder,
 							xcb_randr_mode_info_t x_mode,
 							int32_t				  mode)
 {
-	wlx_output_mode_t *output_mode = calloc(1, sizeof(wlx_output_mode_t));
+	wlx_output_mode_t *output_mode = calloc(1, sizeof(*output_mode));
 	output_mode->server = output_holder->server;
 	output_mode->xid = x_mode.id;
 	output_mode->width_pix = x_mode.width;
@@ -115,7 +115,7 @@ void wlx_output_mode_free(wlx_output_mode_t *output_mode)
 void wlx_output_crtc_create(wlx_output_holder_t *output_holder,
 							xcb_randr_crtc_t	 crtc_xid)
 {
-	wlx_output_crtc_t *output_crtc = calloc(1, sizeof(wlx_output_crtc_t));
+	wlx_output_crtc_t *output_crtc = calloc(1, sizeof(*output_crtc));
 	output_crtc->server = output_holder->server;
 	output_crtc->xid = crtc_xid;
 
@@ -182,7 +182,7 @@ void wl_output_bind(wl_client_t *client,
 					uint32_t	 id)
 {
 	wlx_output_global_t			 *output = data;
-	wlx_output_global_resource_t *output_resource = calloc(1, sizeof(wlx_output_global_resource_t));
+	wlx_output_global_resource_t *output_resource = calloc(1, sizeof(*output_resource));
 	output_resource->resource = wl_resource_create(client, &wl_output_interface, version, id);
 	output_resource->global = output->global;
 	list_insert(&output->resources, &output_resource->link);
@@ -224,7 +224,7 @@ void wlx_output_global_disconnect(wlx_output_global_t *output)
 void wlx_output_global_create(wlx_output_holder_t *output_holder,
 							  xcb_randr_output_t   output_xid)
 {
-	wlx_output_global_t *output = calloc(1, sizeof(wlx_output_global_t));
+	wlx_output_global_t *output = calloc(1, sizeof(*output));
 	output->server = output_holder->server;
 	output->xid = output_xid;
 	list_init(&output->resources);
