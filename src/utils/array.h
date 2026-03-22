@@ -12,4 +12,6 @@ typedef struct wl_array array_t;
 
 #define array_for_each wl_array_for_each
 
+#define array_len(array, type_size) ((array)->size / (type_size))
+
 #endif // UTILS_ARRAY_H
