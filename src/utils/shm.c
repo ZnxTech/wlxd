@@ -83,6 +83,7 @@ bool create_shm_file_pair(size_t size,
 
 	int ro_fd = shm_open(name, O_RDONLY, 0);
 	shm_unlink(name);
+	free(name);
 
 	if (ro_fd < 0) {
 		close(rw_fd);
