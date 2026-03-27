@@ -86,19 +86,7 @@ BreakBeforeTernaryOperators: true
 BreakFunctionDefinitionParameters: false
 BreakStringLiterals: false
 
-# set to 0 (no limit) for libwayland's / wayland-scanner's / libxcb's annoying longer functions and types
-# at least until clang-format implements a rule for disallowing binning after assignments, for e.g.:
-# ---
-# int long_variable_name =
-#     wl_long_function_name( ... alot of variables ... );
-# ---
-#
-# should be:
-# ---
-# int long_variable_name = wl_long_function_name( ... variables ...,
-#                                                 ... more variables ...);
-# ---
-ColumnLimit: 0
+ColumnLimit: 120
 
 # ContinuationIndentWidth: 0
 DerivePointerAlignment: false

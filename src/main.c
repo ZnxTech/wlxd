@@ -1,15 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <wayland-server-core.h>
-#include <xcb/randr.h>
-
-#include "x_client.h"
-
-int x_client_init(x_client_t *client);
-
 const char *help_str =
-	"Usage: wl11d [OPTION...]\n"
+	"Usage: wlxd [OPTION...]\n"
 	"\n"
 	"	-h, --help		give this help list\n";
 

@@ -9,8 +9,7 @@ static void wlx_server_handle_x_event(wlx_server_t		  *server,
 									  xcb_generic_event_t *event)
 {
 	// -------- core events --------
-	switch (event->response_type) {
-	}
+	switch (event->response_type) {}
 
 	// -------- RandR events --------
 	switch (event->response_type - server->x_ext_holder.randr.f_event) {
@@ -19,12 +18,10 @@ static void wlx_server_handle_x_event(wlx_server_t		  *server,
 	}
 
 	// -------- XInput events --------
-	switch (event->response_type - server->x_ext_holder.xinput.f_event) {
-	}
+	switch (event->response_type - server->x_ext_holder.xinput.f_event) {}
 
 	// -------- xkb events --------
-	switch (event->response_type - server->x_ext_holder.xkb.f_event) {
-	}
+	switch (event->response_type - server->x_ext_holder.xkb.f_event) {}
 }
 
 int wlx_server_init_wl(wlx_server_t *server)

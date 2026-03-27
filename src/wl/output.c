@@ -187,9 +187,13 @@ void wl_output_bind(wl_client_t *client,
 	output_resource->global = output->global;
 	list_insert(&output->resources, &output_resource->link);
 
-	wl_resource_set_implementation(output_resource->resource, &wl_output_impl, output_resource, wl_output_resource_destroy);
-	wl_output_send_geometry(output_resource->resource, output->crtc->logical_x, output->crtc->logical_y, output->width_phy, output->height_phy, output->subpixel_order, output->make, output->model, output->crtc->transform);
-	wl_output_send_mode(output_resource->resource, WL_OUTPUT_MODE_CURRENT, output->mode->width_pix, output->mode->height_pix, output->mode->refresh_mhz);
+	wl_resource_set_implementation(output_resource->resource, &wl_output_impl, output_resource,
+								   wl_output_resource_destroy);
+	wl_output_send_geometry(output_resource->resource, output->crtc->logical_x, output->crtc->logical_y,
+							output->width_phy, output->height_phy, output->subpixel_order, output->make, output->model,
+							output->crtc->transform);
+	wl_output_send_mode(output_resource->resource, WL_OUTPUT_MODE_CURRENT, output->mode->width_pix,
+						output->mode->height_pix, output->mode->refresh_mhz);
 	wl_output_send_scale(output_resource->resource, output->scale_factor);
 	wl_output_send_name(output_resource->resource, output->name);
 	wl_output_send_description(output_resource->resource, output->desc);
@@ -202,7 +206,8 @@ void wlx_output_global_send_mode(wlx_output_global_t *output)
 {
 	wlx_output_global_resource_t *output_global_resource;
 	list_for_each (output_global_resource, &output->resources, link)
-		wl_output_send_mode(output_global_resource->resource, WL_OUTPUT_MODE_CURRENT, output->mode->width_pix, output->mode->height_pix, output->mode->refresh_mhz);
+		wl_output_send_mode(output_global_resource->resource, WL_OUTPUT_MODE_CURRENT, output->mode->width_pix,
+							output->mode->height_pix, output->mode->refresh_mhz);
 }
 
 void wlx_output_global_connect(wlx_output_global_t *output)
@@ -210,7 +215,8 @@ void wlx_output_global_connect(wlx_output_global_t *output)
 	if (output->global)
 		return;
 
-	output->global = wl_global_create(output->server->wl_display, &wl_output_interface, wl_output_interface.version, output, wl_output_bind);
+	output->global = wl_global_create(output->server->wl_display, &wl_output_interface, wl_output_interface.version,
+									  output, wl_output_bind);
 }
 
 void wlx_output_global_disconnect(wlx_output_global_t *output)
@@ -232,7 +238,8 @@ void wlx_output_global_create(wlx_output_holder_t *output_holder,
 	xcb_generic_error_t				  *goi_err = NULL;
 	xcb_randr_get_output_info_cookie_t goi_cookie;
 	xcb_randr_get_output_info_reply_t *goi_reply;
-	goi_cookie = xcb_randr_get_output_info(output_holder->server->x_display, output_xid, output_holder->config_timestamp);
+	goi_cookie =
+		xcb_randr_get_output_info(output_holder->server->x_display, output_xid, output_holder->config_timestamp);
 	goi_reply = xcb_randr_get_output_info_reply(output_holder->server->x_display, goi_cookie, &goi_err);
 
 	if (goi_err)

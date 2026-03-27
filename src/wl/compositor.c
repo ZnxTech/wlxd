@@ -209,7 +209,8 @@ int wlx_compositor_init(wlx_compositor_global_t *compositor,
 	compositor->server = server;
 	list_init(&compositor->regions);
 	list_init(&compositor->surfaces);
-	compositor->global = wl_global_create(server->wl_display, &wl_compositor_interface, wl_compositor_interface.version, compositor, wl_compositor_bind);
+	compositor->global = wl_global_create(server->wl_display, &wl_compositor_interface, wl_compositor_interface.version,
+										  compositor, wl_compositor_bind);
 	return 0;
 }
 
