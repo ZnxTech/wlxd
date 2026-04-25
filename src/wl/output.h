@@ -55,21 +55,21 @@ typedef struct wlx_output_global {
 	char *make, *model, *name, *desc;
 } wlx_output_global_t;
 
-typedef struct wlx_output_holder {
+typedef struct wlx_output_manager {
 	wlx_server_t *server;
 
 	xcb_timestamp_t config_timestamp;
 	list_t			modes;
 	list_t			crtcs;
 	list_t			outputs;
-} wlx_output_holder_t;
+} wlx_output_manager_t;
 
-int wlx_output_holder_init(wlx_output_holder_t *output_holder,
-						   wlx_server_t		   *server);
+int wlx_output_manager_init(wlx_output_manager_t *manager,
+							wlx_server_t		 *server);
 
-void wlx_output_holder_free(wlx_output_holder_t *output_holder);
+void wlx_output_manager_free(wlx_output_manager_t *manager);
 
-void wlx_output_handle_event(wlx_server_t		 *server,
-							 xcb_generic_event_t *event);
+void wlx_output_manager_handle_event(wlx_output_manager_t *manager,
+									 xcb_generic_event_t  *event);
 
 #endif // WLX_WL_OUTPUT_H
