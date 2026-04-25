@@ -5,6 +5,8 @@
 
 #include <xcb/xcb.h>
 
+#include "../server.h"
+
 // defines the range of the XIDs that the node is made to store
 // for e.g. node with an xid_min of 128 will store all XIDs from and including
 // 128 to 255 in addition a node's XID range is always snapped to jumps sized
@@ -24,6 +26,14 @@ typedef struct xid_map {
 	xid_node_t *nodes;
 	size_t		size;
 } xid_map_t;
+
+xid_map_t *wlx_server_get_xid_map(wlx_server_t *server);
+
+#define wlx_get_server(wlx_object) \
+    (wlx_server_t *)((uint8_t *)(wlx_object) + offsetof(typeof(*wlx_object), server))
+
+#define wlx_get_xid_map(wlx_object) \
+    wlx_server_get_xid_map(wlx_get_server(wlx_object))
 
 void xid_map_init(xid_map_t *map);
 

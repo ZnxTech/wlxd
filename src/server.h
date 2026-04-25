@@ -2,40 +2,34 @@
 #define WL_SERVER_H
 
 #include <wayland-server.h>
+#include <wayland-util.h>
 #include <xcb/xcb.h>
 
-#include "utils/xid_map.h"
-
-#include "wl/compositor.h"
-#include "wl/output.h"
 #include "wl/types.h"
 
-#include "x/extension.h"
+typedef struct wlx_server wlx_server_t;
 
-typedef struct wlx_server {
-	bool				 running;
-	x_extension_holder_t x_ext_holder;
-	xid_map_t			 xid_map;
+xcb_connection_t *wlx_server_get_xcb(wlx_server_t *server);
 
-	// -------- wayland variables --------
-	wl_display_t *wl_display;
-	const char	 *sock_name;
-	int			  sock_fd;
+xcb_window_t wlx_server_get_xroot(wlx_server_t *server);
 
-	wlx_output_holder_t output_holder;
+uint8_t wlx_server_get_xroot_depth(wlx_server_t *server);
 
-	// -------- x11 variables --------
-	xcb_connection_t  *x_display;
-	const xcb_setup_t *x_setup;
-	xcb_screen_t	  *x_screenp;
-} wlx_server_t;
+wl_display_t *wlx_server_get_wl(wlx_server_t *server);
 
-int wlx_server_init(wlx_server_t *server);
+#define wlx_get_server(wlx_object) \
+    (wlx_server_t *)((uint8_t *)(wlx_object) + offsetof(typeof(*wlx_object), server))
 
-int wlx_server_run(wlx_server_t *server);
+#define wlx_get_xcb(wlx_object) \
+    wlx_server_get_xcb(wlx_get_server(wlx_object))
 
-int wlx_server_start(wlx_server_t *server);
+#define wlx_get_xroot(wlx_object) \
+    wlx_server_get_xroot(wlx_get_server(wlx_object))
 
-int wlx_server_close(wlx_server_t *server);
+#define wlx_get_xroot_depth(wlx_object) \
+    wlx_server_get_xroot_depth(wlx_get_server(wlx_object))
 
-#endif // WL_SERVER_H
+#define wlx_get_wl(wlx_object) \
+    wlx_server_get_wl(wlx_get_server(wlx_object))
+
+#endif // WL_SERVER_PRIV_H

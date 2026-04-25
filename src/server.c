@@ -1,28 +1,44 @@
 #include "server.h"
+#include "server_priv.h"
 
 #include <stdlib.h>
 #include <string.h>
 
 #include <xcb/randr.h>
 
+xcb_connection_t *wlx_server_get_xcb(wlx_server_t *server)
+{
+	return server->x_display;
+}
+
+xcb_window_t wlx_server_get_xroot(wlx_server_t *server)
+{
+	return server->x_screenp->root;
+}
+
+uint8_t wlx_server_get_xroot_depth(wlx_server_t *server)
+{
+	return server->x_screenp->root_depth;
+}
+
+xid_map_t *wlx_server_get_xid_map(wlx_server_t *server)
+{
+	return &server->xid_map;
+}
+
+x_ext_manager_t *wlx_server_get_ext_manager(wlx_server_t *server)
+{
+	return &server->x_ext_manager;
+}
+
+wl_display_t *wlx_server_get_wl(wlx_server_t *server)
+{
+	return server->wl_display;
+}
+
 static void wlx_server_handle_x_event(wlx_server_t		  *server,
 									  xcb_generic_event_t *event)
-{
-	// -------- core events --------
-	switch (event->response_type) {}
-
-	// -------- RandR events --------
-	switch (event->response_type - server->x_ext_holder.randr.f_event) {
-	case XCB_RANDR_NOTIFY:
-		return;
-	}
-
-	// -------- XInput events --------
-	switch (event->response_type - server->x_ext_holder.xinput.f_event) {}
-
-	// -------- xkb events --------
-	switch (event->response_type - server->x_ext_holder.xkb.f_event) {}
-}
+{}
 
 int wlx_server_init_wl(wlx_server_t *server)
 {
@@ -32,7 +48,7 @@ int wlx_server_init_wl(wlx_server_t *server)
 	if (!(server->sock_name = wl_display_add_socket_auto(server->wl_display)))
 		return 1;
 
-	// init wayland globals/holders
+	// init wayland globals/managers
 
 	return 0;
 }
@@ -52,7 +68,7 @@ int wlx_server_init_x(wlx_server_t *server)
 		xcb_screen_next(&screen_iter);
 
 	server->x_screenp = screen_iter.data;
-	x_extension_holder_init(&server->x_ext_holder, server->x_display);
+	x_ext_manager_init(&server->x_ext_manager, server);
 	return 0;
 }
 
