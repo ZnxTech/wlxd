@@ -118,8 +118,8 @@ PPIndentWidth: 2
 PointerAlignment: Right
 QualifierAlignment: Custom
 QualifierOrder: [
-  const,
   static,
+  const,
   inline,
   volatile,
   restrict,
