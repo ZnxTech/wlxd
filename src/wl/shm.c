@@ -85,7 +85,7 @@ static void wl_buffer_resource_destroy(wl_resource_t *resource)
 }
 
 static void wl_buffer_request_destroy(wl_client_t	*client,
-										  wl_resource_t *resource)
+									  wl_resource_t *resource)
 {
 	wl_resource_destroy(resource);
 }
@@ -381,7 +381,7 @@ err_ext:
 	return 1;
 }
 
-int wlx_shm_global_free(wlx_shm_global_t *shm)
+void wlx_shm_global_free(wlx_shm_global_t *shm)
 {
-	return 0;
+	wl_global_destroy(shm->global);
 }

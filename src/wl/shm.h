@@ -28,6 +28,6 @@ typedef struct wlx_shm_global {
 int wlx_shm_global_init(wlx_shm_global_t *shm,
 						wlx_server_t	 *server);
 
-int wlx_shm_global_free(wlx_shm_global_t *shm);
+void wlx_shm_global_free(wlx_shm_global_t *shm);
 
 #endif // WLX_SHM_H

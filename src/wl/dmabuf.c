@@ -662,4 +662,5 @@ void wlx_dmabuf_free(wlx_dmabuf_global_t *dmabuf)
 	array_release(&dmabuf->indices);
 	if (dmabuf->table_fd >= 0)
 		close(dmabuf->table_fd);
+	wl_global_destroy(dmabuf->global);
 }
