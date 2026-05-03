@@ -10,8 +10,6 @@
 
 #define WLX_DMABUF_MAX_PLANES 4
 
-typedef struct wlx_dmabuf_global wlx_dmabuf_global_t;
-
 typedef struct wlx_dmabuf_feedback_tranche {
 	list_t link;
 
@@ -21,9 +19,8 @@ typedef struct wlx_dmabuf_feedback_tranche {
 } wlx_dmabuf_feedback_tranche_t;
 
 typedef struct wlx_dmabuf_feedback_resource {
-	wl_resource_t		*resource;
-	wlx_dmabuf_global_t *dmabuf;
-	wlx_server_t		*server;
+	wl_resource_t *resource;
+	wlx_server_t  *server;
 
 	dev_t  main_dev;
 	bool   main_dev_failed;
@@ -33,9 +30,9 @@ typedef struct wlx_dmabuf_feedback_resource {
 } wlx_dmabuf_feedback_resource_t;
 
 typedef struct wlx_dmabuf_params_resource {
-	wl_resource_t		*resource;
-	wlx_dmabuf_global_t *dmabuf;
-	wlx_server_t		*server;
+	wl_resource_t *resource;
+	wlx_server_t  *server;
+	wl_resource_t *dmabuf;
 
 	bool used;
 

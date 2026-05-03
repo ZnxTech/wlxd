@@ -190,8 +190,9 @@ static int wlx_dmabuf_params_create_pixmap(wlx_dmabuf_params_resource_t *params,
 										   int32_t						 height,
 										   uint32_t						 drm_format)
 {
-	xcb_connection_t *xcb = wlx_get_xcb(params);
-	xcb_window_t	  root = wlx_get_xroot(params);
+	xcb_connection_t	*xcb = wlx_get_xcb(params);
+	xcb_window_t		 root = wlx_get_xroot(params);
+	wlx_dmabuf_global_t *dmabuf = wl_resource_get_user_data(params->dmabuf);
 
 	if (params->used) {
 		wl_resource_post_error(params->resource, ZWP_LINUX_BUFFER_PARAMS_V1_ERROR_ALREADY_USED,
@@ -217,7 +218,7 @@ static int wlx_dmabuf_params_create_pixmap(wlx_dmabuf_params_resource_t *params,
 
 	bool					  supported = false;
 	wlx_dmabuf_table_entry_t *entry;
-	array_for_each (entry, &params->dmabuf->table) {
+	array_for_each (entry, &dmabuf->table) {
 		if (drm_format == entry->drm_format && params->drm_modifier == entry->drm_modifier) {
 			supported = true;
 			break;
@@ -447,6 +448,7 @@ static void wl_dmabuf_request_create_params(wl_client_t	  *client,
 	}
 
 	params->server = dmabuf->server;
+	params->dmabuf = resource;
 	wlx_dmabuf_params_clear_fds(params);
 
 	params->resource = wl_resource_create(client, &zwp_linux_buffer_params_v1_interface,
