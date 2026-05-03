@@ -4,10 +4,9 @@
 #include <xcb/randr.h>
 #include <xcb/xcb.h>
 
+#include "../server.h"
 #include "../utils/list.h"
 #include "types.h"
-
-typedef struct wlx_server wlx_server_t;
 
 typedef struct wlx_output_mode {
 	list_t		  link;

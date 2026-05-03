@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 
-#include "../server.h"
 #include "../utils/xid_map.h"
 #include "../x/ext.h"
 
