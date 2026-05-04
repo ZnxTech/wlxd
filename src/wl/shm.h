@@ -1,5 +1,5 @@
-#ifndef WLX_SHM_H
-#define WLX_SHM_H
+#ifndef WLX_WL_SHM_H
+#define WLX_WL_SHM_H
 
 #include <stdint.h>
 
@@ -30,4 +30,4 @@ int wlx_shm_global_init(wlx_shm_global_t *shm,
 
 void wlx_shm_global_free(wlx_shm_global_t *shm);
 
-#endif // WLX_SHM_H
+#endif // WLX_WL_SHM_H

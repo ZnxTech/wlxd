@@ -1,5 +1,5 @@
-#ifndef X_EXTENSION_H
-#define X_EXTENSION_H
+#ifndef WLX_X_EXTENSION_H
+#define WLX_X_EXTENSION_H
 
 #include <stdint.h>
 #include <xcb/xcb.h>
@@ -34,4 +34,4 @@ x_ext_manager_t *wlx_server_get_ext_manager(wlx_server_t *server);
 void x_ext_manager_init(x_ext_manager_t *x_ext_manager,
 						wlx_server_t	*server);
 
-#endif // X_EXTENSION_H
+#endif // WLX_X_EXTENSION_H

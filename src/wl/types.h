@@ -1,5 +1,5 @@
-#ifndef WL_TYPES_H
-#define WL_TYPES_H
+#ifndef WLX_WL_TYPES_H
+#define WLX_WL_TYPES_H
 
 #include <wayland-server.h>
 
@@ -17,4 +17,4 @@ typedef struct wl_shm_buffer   wl_shm_buffer_t;
 typedef struct wl_shm_pool	   wl_shm_pool_t;
 typedef struct wl_signal	   wl_signal_t;
 
-#endif // WL_TYPES_H
+#endif // WLX_WL_TYPES_H

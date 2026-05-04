@@ -1,5 +1,5 @@
-#ifndef WL_SERVER_H
-#define WL_SERVER_H
+#ifndef WLX_SERVER_H
+#define WLX_SERVER_H
 
 #include <wayland-server.h>
 #include <wayland-util.h>
@@ -32,4 +32,4 @@ wl_display_t *wlx_server_get_wl(wlx_server_t *server);
 #define wlx_get_wl(wlx_object) \
     wlx_server_get_wl(wlx_get_server(wlx_object))
 
-#endif // WL_SERVER_PRIV_H
+#endif // WLX_SERVER_PRIV_H
