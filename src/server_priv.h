@@ -1,5 +1,5 @@
-#ifndef WL_SERVER_PRIV_H
-#define WL_SERVER_PRIV_H
+#ifndef WLX_SERVER_PRIV_H
+#define WLX_SERVER_PRIV_H
 
 #include <wayland-server.h>
 #include <xcb/xcb.h>
@@ -38,4 +38,4 @@ int wlx_server_start(wlx_server_t *server);
 
 int wlx_server_close(wlx_server_t *server);
 
-#endif // WL_SERVER_PRIV_H
+#endif // WLX_SERVER_PRIV_H

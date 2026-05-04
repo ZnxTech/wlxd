@@ -1,5 +1,5 @@
-#ifndef UTILS_LIST_H
-#define UTILS_LIST_H
+#ifndef WLX_UTILS_LIST_H
+#define WLX_UTILS_LIST_H
 
 #include <wayland-util.h>
 
@@ -18,4 +18,4 @@ typedef struct wl_list list_t;
 #define list_for_each_reverse      wl_list_for_each_reverse
 #define list_for_each_reverse_safe wl_list_for_each_reverse_safe
 
-#endif // UTILS_LIST_H
+#endif // WLX_UTILS_LIST_H

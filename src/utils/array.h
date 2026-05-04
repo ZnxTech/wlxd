@@ -1,5 +1,5 @@
-#ifndef UTILS_ARRAY_H
-#define UTILS_ARRAY_H
+#ifndef WLX_UTILS_ARRAY_H
+#define WLX_UTILS_ARRAY_H
 
 #include <wayland-util.h>
 
@@ -14,4 +14,4 @@ typedef struct wl_array array_t;
 
 #define array_len(array, type_size) ((array)->size / (type_size))
 
-#endif // UTILS_ARRAY_H
+#endif // WLX_UTILS_ARRAY_H

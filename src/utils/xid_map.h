@@ -1,5 +1,5 @@
-#ifndef UTILS_XID_MAP_H
-#define UTILS_XID_MAP_H
+#ifndef WLX_UTILS_XID_MAP_H
+#define WLX_UTILS_XID_MAP_H
 
 #include <stdint.h>
 
@@ -49,4 +49,4 @@ void xid_map_remove(xid_map_t *map,
 void *xid_map_search(xid_map_t *map,
 					 uint32_t	xid);
 
-#endif // UTILS_XID_MAP_H
+#endif // WLX_UTILS_XID_MAP_H
